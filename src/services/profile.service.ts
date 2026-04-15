@@ -1,4 +1,4 @@
-import { Injectable, BadGatewayException } from '@nestjs/common';
+import { Injectable, BadGatewayException, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import axios from 'axios';
@@ -100,7 +100,7 @@ export class ProfilesService {
 
   async findOne(id: string) {
     const profile = await this.model.findOne({ id }).lean();
-    if (!profile) throw new Error('Profile not found');
+    if (!profile) throw new NotFoundException('Profile not found');
 
     return {
       status: 'success',
@@ -110,6 +110,6 @@ export class ProfilesService {
 
   async delete(id: string) {
     const res = await this.model.deleteOne({ id });
-    if (!res.deletedCount) throw new Error('Profile not found');
+    if (!res.deletedCount) throw new NotFoundException('Profile not found');
   }
 }

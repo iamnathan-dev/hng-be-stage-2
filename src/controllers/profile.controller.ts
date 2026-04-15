@@ -8,6 +8,7 @@ import {
   Query,
   HttpCode,
   BadRequestException,
+  UnprocessableEntityException,
 } from '@nestjs/common';
 import { CreateProfileDto } from '../dto/create-profile.dto';
 import { ProfilesService } from '../services/profile.service';
@@ -20,6 +21,10 @@ export class ProfilesController {
   create(@Body() dto: CreateProfileDto) {
     if (!dto.name) {
       throw new BadRequestException('Missing or empty name');
+    }
+
+    if (typeof dto.name !== 'string' || /^\d+$/.test(dto.name)) {
+      throw new UnprocessableEntityException('Numeric name not allowed');
     }
 
     return this.service.create(dto.name);
