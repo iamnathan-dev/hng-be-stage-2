@@ -42,7 +42,7 @@ importers:
         specifier: ^7.8.1
         version: 7.8.2
       uuid:
-        specifier: ^9.0.1
+        specifier: '9'
         version: 9.0.1
     devDependencies:
       '@eslint/eslintrc':
