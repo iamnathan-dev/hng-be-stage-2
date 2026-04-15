@@ -10,7 +10,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { CreateProfileDto } from '../dto/create-profile.dto';
-import { ProfilesService } from 'src/services/profile.service';
+import { ProfilesService } from '../services/profile.service';
 
 @Controller('api/profiles')
 export class ProfilesController {
