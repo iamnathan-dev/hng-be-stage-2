@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import {
   getAgeGroup,
   getTopCountry,
-} from 'src/common/utils/classification.util';
+} from '../common/utils/classification.util';
 
 @Injectable()
 export class ProfilesService {
