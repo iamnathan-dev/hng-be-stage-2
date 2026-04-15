@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import axios from 'axios';
 import { Profile } from '../schemas/profile.schema';
-import { v7 as uuidv7 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import {
   getAgeGroup,
   getTopCountry,
@@ -61,7 +61,7 @@ export class ProfilesService {
     const topCountry = getTopCountry(n.country);
 
     const created = await this.model.create({
-      id: uuidv7(),
+      id: uuidv4(),
       name: normalized,
       gender: g.gender,
       gender_probability: g.probability,
